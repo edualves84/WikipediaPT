@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Artigo {
     String url;
@@ -25,13 +26,12 @@ public class Artigo {
 
     }
 
-    @Test
+    @Test 
     public void consultarArtigo(){
        driver.get(url);
-       driver.findElement(By.name("search")).clear();
-       driver.findElement(By.name("search")).sendKeys("ovos de pascoa");
-       driver.findElement(By.name("search")).click();
-       assertEquals("ovos de pascoa", driver.getTitle());
+        driver.findElement(By.id("searchInput")).sendKeys("Ovo de Páscoa");
+        driver.findElement(By.cssSelector("button.wvui-button")).click();
+        assertTrue(driver.getTitle().contains("Ovo de Páscoa"));
 
     }
 
